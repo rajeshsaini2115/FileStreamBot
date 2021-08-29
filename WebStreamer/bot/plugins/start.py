@@ -28,12 +28,13 @@ HELP_TEXT = """
 <i>Contact developer (or) report bugs</i> <b>: <a href='https://t.me/rajeshsaini2115'>[Click Here]</a></b>"""
 
 ABOUT_TEXT = """
-<b>⚜ Mʏ ɴᴀᴍᴇ : FileStreamX</b>\n
-<b>🔸Vᴇʀꜱɪᴏɴ : <a href='https://telegram.me/AvishkarPatil'>3.0.1</a></b>\n
-<b>🔹Sᴏᴜʀᴄᴇ : <a href='https://github.com/avipatilpro/FileStreamBot'>Cʟɪᴄᴋ Hᴇʀᴇ</a></b>\n
-<b>🔸GitHub : <a href='https://GitHub.com/avipatilpro'>Fᴏʟʟᴏᴡ</a></b>\n
-<b>🔹Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://telegram.me/Avishkarpatil'>Aᴠɪsʜᴋᴀʀ Pᴀᴛɪʟ</a></b>\n
-<b>🔸Lᴀꜱᴛ ᴜᴘᴅᴀᴛᴇᴅ : <a href='https://telegram.me/AvishkarPatil'>[ 11-ᴊᴜʟʏ-21 ] 04:35 PM</a></b>"""
+<b>⚜ My Name : <a href='https://telegram.me/mrkplinkbot'>MRKP FILE TO LINK BOT</a></b>\n
+<b>🔸Version : <a href='https://telegram.me/mrkpmovies'>3.0.1</a></b>\n
+<b>🔹Developer : <a href='https://telegram.me/rajeshsaini2115'>Rajesh Saini</a></b>\n
+<b>🔸Language : <a href='https://python.org/'>Python</a></b>\n
+<b>🔹Library : <a href='https://pyrogram.org/'>Pyrogram V1.2.0</a></b>\n
+<b>🔸Last Updated : <a href='https://youtube.com/channel/UCyvdSgqnHLW9xYYurdWn97g'>[ 4-Aug-21 ] 04:35 PM</a></b>\n
+<b>🔹Source Code : <a href='https://youtube.com/channel/UCKcntT2R8QNJaRwhnQIgRfA'>Click Here</a></b>"""
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
