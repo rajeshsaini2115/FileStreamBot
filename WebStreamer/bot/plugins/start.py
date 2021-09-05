@@ -78,6 +78,59 @@ async def cb_data(bot, update):
             disable_web_page_preview=True,
             reply_markup=ABOUT_BUTTONS
         )
+    elif "refreshForceSub" in cb_data:
+        if Config.UPDATES_CHANNEL:
+            try:
+                user = await bot.get_chat_member(int(Config.UPDATES_CHANNEL), cmd.message.chat.id)
+                if user.status == "kicked":
+                    await cmd.message.edit(
+                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/mrkphelp).",
+                        parse_mode="markdown",
+                        disable_web_page_preview=True
+                    )
+                    return
+            except UserNotParticipant:
+                invite_link = await bot.create_chat_invite_link(int(Config.UPDATES_CHANNEL))
+                await cmd.message.edit(
+                    text="**You Still Didn't Join ☹️, Please Join My Updates Channel to use this Bot!**\n\n"
+                         "Due to Overload, Only Channel Subscribers can use the Bot!",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🤖 Join Updates Channel", url=invite_link.invite_link)
+                            ],
+                            [
+                                InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshmeh")
+                            ]
+                        ]
+                    ),
+                    parse_mode="markdown"
+                )
+                return
+            except Exception:
+                await cmd.message.edit(
+                    text="Something went Wrong. Contact my [Support Group](https://t.me/mrkphelp).",
+                    parse_mode="markdown",
+                    disable_web_page_preview=True
+                )
+                return
+        await cmd.message.edit(
+            text=Config.HOME_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
+            parse_mode="Markdown",
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("Support Group", url="https://t.me/mrkphelp"),
+                        InlineKeyboardButton("Bots Channel", url="https://t.me/mrkpbots")
+                    ],
+                    [
+                        InlineKeyboardButton("About Bot👩‍💻", callback_data="aboutbot"),
+                        InlineKeyboardButton("About Dev👩‍💻", callback_data="aboutdevs"),
+                    ]
+                ]
+            )
+        )
     else:
         await update.message.delete()
 
@@ -109,7 +162,8 @@ async def start(b, m):
                     text="<i>Jᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴍᴇ 🔐</i>",
                     reply_markup=InlineKeyboardMarkup(
                         [[
-                            InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                            InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}"),
+                            InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshForceSub")
                             ]]
                     ),
                     parse_mode="HTML"
@@ -148,7 +202,8 @@ async def start(b, m):
                     text="**Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ**!\n\n**Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ**!",
                     reply_markup=InlineKeyboardMarkup(
                         [[
-                          InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                          InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}"),
+                          InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshForceSub")
                             ]]
                     ),
                     parse_mode="markdown"
@@ -235,7 +290,8 @@ async def help_handler(bot, message):
                 text="**Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!__",
                 reply_markup=InlineKeyboardMarkup(
                     [[
-                        InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                        InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}"),
+                        InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshForceSub")
                         ]]
                 ),
                 parse_mode="markdown"
